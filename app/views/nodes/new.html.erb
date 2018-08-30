@@ -1,5 +1,43 @@
 
 <%=form_for([current_owner,@record,@node]) do |f|%>
+    <%=f.label :nodeNumber%>
+    <%=f.number_field :nodeNumber%>
     <%=f.label :data%>
-    <%=f.number_field :data%>
+    <%=f.text_field :data%>
+
+    </br>
+    <h5>Leave empty if genesis</h5>
+    <%=f.label :referenceNodeId%>
+    <%=f.number_field :referenceNodeId%>
+
+    <%=f.submit "Create"%>
 <%end%>
+</br>
+</br>
+</br>
+<h2>Your nodes:</h2>
+
+<%if @record.nodes%>
+    <%@record.nodes.each do |node|%>
+        <%if node.owner == current_owner%>
+            Data:<%= node.data%>
+    <%else%>
+        Data: <%=(0..50).map { ('a'..'z').to_a[rand(26)]}.join%>
+    <%end%>
+    </br>
+    Number:<%=node.nodeNumber%>
+</br>
+ID:<%=node.id%>
+</br>
+<%if node.referenceNodeId%>
+    Parent Node: <%=node.referenceNodeId%>
+<%else%>
+    Is Genesis node
+<%end%>
+</br>
+</br>
+</br>
+    <%end%>
+    </br>
+<%end%>
+
