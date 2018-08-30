@@ -1,0 +1,9 @@
+<%=link_to "Logout",destroy_owner_session_path , method: :delete%>
+<%=link_to "SignIn",new_owner_session_path %>
+
+</br>
+</br>
+</br>
+<%if owner_signed_in?%>
+    <%=link_to "Create New Record and Nodes",new_record_path%>
+<%end%>
