@@ -5,5 +5,5 @@
 </br>
 </br>
 <%if owner_signed_in?%>
-    <%=link_to "Create New Record and Nodes",new_record_path%>
+    <%=link_to "Create New Record and Nodes",new_owner_record_path(current_owner)%>
 <%end%>
