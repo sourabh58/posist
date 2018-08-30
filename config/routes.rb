@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :owners
   root to: 'static#home'
 
-  resources :owner do
+  resources :owners do
       resources :records do
           resources :nodes
       end

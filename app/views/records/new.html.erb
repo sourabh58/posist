@@ -1,2 +1,14 @@
-<%=form_for(@record)%>
+Form for new record ->
+<%=form_for([current_owner,@record]) do |f|%>
+    <%=f.label :name%>
+    <%=f.text_field :name%>
+    <%=f.submit "Create"%>
+<%end%>
+
+<hr>
+Your older records:
+
+<% current_owner.records.each do |record|%>
+    <%=link_to record.name,owner_record_path(record.owner,record)%>
+    </br>
 <%end%>
